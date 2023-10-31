@@ -598,23 +598,23 @@ struct SelectionSetTemplate {
   ) -> TemplateString {
     let isConcreteType = selectionSet.typeInfo.parentType is GraphQLObjectType
     let allFields = selectionSet.makeFieldIterator()
+    let fieldMap = IteratorSequence(allFields).map {
+      InitializerParameterTemplate($0, isOptional: $0.isOptional(scope: selectionSet.typeInfo.scope))
+    }
 
     return TemplateString(
       """
       \(if: !isConcreteType, "__typename: String\(if: !allFields.isEmpty, ",")")
-      \(IteratorSequence(allFields).map({
-        InitializerParameterTemplate($0, scope: selectionSet.typeInfo.scope)
-      }))
+      \(fieldMap)
       """
     )
   }
 
   private func InitializerParameterTemplate(
     _ field: IR.Field,
-    scope: IR.ScopeDescriptor
+    isOptional: Bool
   ) -> TemplateString {
-    let isOptional: Bool = field.type.isNullable || field.isConditionallyIncluded(in: scope)
-    return """
+      """
       \(field.responseKey.renderAsInitializerParameterName(config: config.config)): \
       \(typeName(for: field, forceOptional: isOptional))\
       \(if: isOptional, " = nil")
@@ -626,6 +626,9 @@ struct SelectionSetTemplate {
   ) -> TemplateString {
     let isConcreteType = selectionSet.typeInfo.parentType is GraphQLObjectType
     let allFields = selectionSet.makeFieldIterator()
+    let fieldMap = IteratorSequence(allFields).map {
+      InitializerDataDictFieldTemplate($0, isOptional: $0.isOptional(scope: selectionSet.typeInfo.scope))
+    }
 
     return TemplateString(
       """
@@ -633,13 +636,14 @@ struct SelectionSetTemplate {
       \(if: isConcreteType,
       "\(GeneratedSchemaTypeReference(selectionSet.typeInfo.parentType)).typename,",
       else: "__typename,")
-      \(IteratorSequence(allFields).map(InitializerDataDictFieldTemplate(_:)), terminator: ",")
+      \(fieldMap, terminator: ",")
       """
     )
   }
 
   private func InitializerDataDictFieldTemplate(
-    _ field: IR.Field
+    _ field: IR.Field,
+    isOptional: Bool
   ) -> TemplateString {
     let isEntityField: Bool = {
       switch field.type.innerType {
@@ -650,7 +654,8 @@ struct SelectionSetTemplate {
 
     return """
       "\(field.responseKey)": \(field.responseKey.renderAsInitializerParameterAccessorName(config: config.config))\
-      \(if: isEntityField, "._fieldData")
+      \(if: isEntityField, "._fieldData")\
+      \(if: isOptional, " as AnyHashable? ?? .none")
       """
   }
 
@@ -1136,6 +1141,10 @@ extension IR.Field {
   fileprivate func isConditionallyIncluded(in scope: IR.ScopeDescriptor) -> Bool {
     guard let conditions = self.inclusionConditions else { return false }
     return !scope.matches(conditions)
+  }
+
+  fileprivate func isOptional(scope: IR.ScopeDescriptor) -> Bool {
+    type.isNullable || isConditionallyIncluded(in: scope)
   }
 }
 

@@ -657,29 +657,29 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
             data: [
               "__typename": TestSchema.Objects.Animal.typename,
               "string": string,
-              "string_optional": string_optional,
+              "string_optional": string_optional as AnyHashable? ?? .none,
               "int": int,
-              "int_optional": int_optional,
+              "int_optional": int_optional as AnyHashable? ?? .none,
               "float": float,
-              "float_optional": float_optional,
+              "float_optional": float_optional as AnyHashable? ?? .none,
               "boolean": boolean,
-              "boolean_optional": boolean_optional,
+              "boolean_optional": boolean_optional as AnyHashable? ?? .none,
               "custom": custom,
-              "custom_optional": custom_optional,
+              "custom_optional": custom_optional as AnyHashable? ?? .none,
               "custom_required_list": custom_required_list,
-              "custom_optional_list": custom_optional_list,
+              "custom_optional_list": custom_optional_list as AnyHashable? ?? .none,
               "list_required_required": list_required_required,
-              "list_optional_required": list_optional_required,
+              "list_optional_required": list_optional_required as AnyHashable? ?? .none,
               "list_required_optional": list_required_optional,
-              "list_optional_optional": list_optional_optional,
+              "list_optional_optional": list_optional_optional as AnyHashable? ?? .none,
               "nestedList_required_required_required": nestedList_required_required_required,
               "nestedList_required_required_optional": nestedList_required_required_optional,
               "nestedList_required_optional_optional": nestedList_required_optional_optional,
               "nestedList_required_optional_required": nestedList_required_optional_required,
-              "nestedList_optional_required_required": nestedList_optional_required_required,
-              "nestedList_optional_required_optional": nestedList_optional_required_optional,
-              "nestedList_optional_optional_required": nestedList_optional_optional_required,
-              "nestedList_optional_optional_optional": nestedList_optional_optional_optional,
+              "nestedList_optional_required_required": nestedList_optional_required_required as AnyHashable? ?? .none,
+              "nestedList_optional_required_optional": nestedList_optional_required_optional as AnyHashable? ?? .none,
+              "nestedList_optional_optional_required": nestedList_optional_optional_required as AnyHashable? ?? .none,
+              "nestedList_optional_optional_optional": nestedList_optional_optional_optional as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -889,7 +889,7 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": TestSchema.Objects.Animal.typename,
-              "friends": friends._fieldData,
+              "friends": friends._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -941,7 +941,7 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": TestSchema.Objects.Animal.typename,
-              "friends": friends._fieldData,
+              "friends": friends._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -1155,7 +1155,7 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": TestSchema.Objects.Animal.typename,
-              "friend": friend._fieldData,
+              "friend": friend._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -1295,8 +1295,8 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": TestSchema.Objects.Height.typename,
-            "inches": inches,
-            "feet": feet,
+            "inches": inches as AnyHashable? ?? .none,
+            "feet": feet as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(TestOperationQuery.Data.AllAnimal.AsCat.Height.self),
@@ -1788,7 +1788,7 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": TestSchema.Objects.Animal.typename,
-              "name": name,
+              "name": name as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -2170,8 +2170,8 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": TestSchema.Objects.Animal.typename,
-            "name": name,
-            "self": _self,
+            "name": name as AnyHashable? ?? .none,
+            "self": _self as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
@@ -2221,7 +2221,7 @@ class SelectionSetTemplate_Initializers_Tests: XCTestCase {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": TestSchema.Objects.Animal.typename,
-            "name": name,
+            "name": name as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(TestOperationQuery.Data.AllAnimal.self)
