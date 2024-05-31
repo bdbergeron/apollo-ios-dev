@@ -36,7 +36,7 @@ public class HeroParentTypeDependentFieldQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroParentTypeDependentFieldQuery.Data.self)
@@ -105,7 +105,7 @@ public class HeroParentTypeDependentFieldQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": StarWarsAPI.Objects.Human.typename,
-              "friends": friends._fieldData,
+              "friends": friends._fieldData as AnyHashable? ?? .none,
               "name": name,
             ],
             fulfilledFragments: [
@@ -174,7 +174,7 @@ public class HeroParentTypeDependentFieldQuery: GraphQLQuery {
               self.init(_dataDict: DataDict(
                 data: [
                   "__typename": StarWarsAPI.Objects.Human.typename,
-                  "height": height,
+                  "height": height as AnyHashable? ?? .none,
                   "name": name,
                 ],
                 fulfilledFragments: [
@@ -212,7 +212,7 @@ public class HeroParentTypeDependentFieldQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": StarWarsAPI.Objects.Droid.typename,
-              "friends": friends._fieldData,
+              "friends": friends._fieldData as AnyHashable? ?? .none,
               "name": name,
             ],
             fulfilledFragments: [
@@ -281,7 +281,7 @@ public class HeroParentTypeDependentFieldQuery: GraphQLQuery {
               self.init(_dataDict: DataDict(
                 data: [
                   "__typename": StarWarsAPI.Objects.Human.typename,
-                  "height": height,
+                  "height": height as AnyHashable? ?? .none,
                   "name": name,
                 ],
                 fulfilledFragments: [

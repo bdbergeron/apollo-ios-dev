@@ -36,7 +36,7 @@ public class SearchQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "search": search._fieldData,
+          "search": search._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(SearchQuery.Data.self)

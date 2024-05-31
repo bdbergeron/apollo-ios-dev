@@ -30,7 +30,7 @@ public class ClassroomPetsQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": AnimalKingdomAPI.Objects.Query.typename,
-          "classroomPets": classroomPets._fieldData,
+          "classroomPets": classroomPets._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(ClassroomPetsQuery.Data.self)
@@ -150,7 +150,7 @@ public class ClassroomPetsQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": __typename,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(ClassroomPetsQuery.Data.ClassroomPet.self),
@@ -250,7 +250,7 @@ public class ClassroomPetsQuery: GraphQLQuery {
             data: [
               "__typename": AnimalKingdomAPI.Objects.Cat.typename,
               "species": species,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
               "laysEggs": laysEggs,
               "bodyTemperature": bodyTemperature,
               "isJellicle": isJellicle,
@@ -307,7 +307,7 @@ public class ClassroomPetsQuery: GraphQLQuery {
             data: [
               "__typename": AnimalKingdomAPI.Objects.Bird.typename,
               "species": species,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
               "laysEggs": laysEggs,
               "wingspan": wingspan,
             ],
@@ -356,7 +356,7 @@ public class ClassroomPetsQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": AnimalKingdomAPI.Objects.PetRock.typename,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
               "favoriteToy": favoriteToy,
             ],
             fulfilledFragments: [

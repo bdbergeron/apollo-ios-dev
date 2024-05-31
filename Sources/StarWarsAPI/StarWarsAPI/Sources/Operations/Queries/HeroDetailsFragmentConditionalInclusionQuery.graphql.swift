@@ -37,7 +37,7 @@ public class HeroDetailsFragmentConditionalInclusionQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroDetailsFragmentConditionalInclusionQuery.Data.self)

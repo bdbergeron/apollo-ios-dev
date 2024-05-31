@@ -33,8 +33,8 @@ public class SameHeroTwiceQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
-          "r2": r2._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
+          "r2": r2._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(SameHeroTwiceQuery.Data.self)

@@ -114,8 +114,8 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
           data: [
             "__typename": __typename,
             "height": height._fieldData,
-            "species": species,
-            "skinCovering": skinCovering,
+            "species": species as AnyHashable? ?? .none,
+            "skinCovering": skinCovering as AnyHashable? ?? .none,
             "predators": predators._fieldData,
           ],
           fulfilledFragments: [
@@ -149,7 +149,7 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             data: [
               "__typename": AnimalKingdomAPI.Objects.Height.typename,
               "feet": feet,
-              "inches": inches,
+              "inches": inches as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.Height.self)
@@ -183,7 +183,7 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": __typename,
-              "species": species,
+              "species": species as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.Predator.self)
@@ -283,8 +283,8 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             data: [
               "__typename": __typename,
               "height": height._fieldData,
-              "species": species,
-              "skinCovering": skinCovering,
+              "species": species as AnyHashable? ?? .none,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "predators": predators._fieldData,
             ],
             fulfilledFragments: [
@@ -317,7 +317,7 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
               data: [
                 "__typename": AnimalKingdomAPI.Objects.Height.typename,
                 "feet": feet,
-                "inches": inches,
+                "inches": inches as AnyHashable? ?? .none,
                 "meters": meters,
               ],
               fulfilledFragments: [
@@ -369,8 +369,8 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             data: [
               "__typename": __typename,
               "height": height._fieldData,
-              "species": species,
-              "skinCovering": skinCovering,
+              "species": species as AnyHashable? ?? .none,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "predators": predators._fieldData,
               "bodyTemperature": bodyTemperature,
             ],
@@ -405,7 +405,7 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
               data: [
                 "__typename": AnimalKingdomAPI.Objects.Height.typename,
                 "feet": feet,
-                "inches": inches,
+                "inches": inches as AnyHashable? ?? .none,
                 "meters": meters,
               ],
               fulfilledFragments: [
@@ -465,12 +465,12 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             data: [
               "__typename": __typename,
               "height": height._fieldData,
-              "species": species,
-              "skinCovering": skinCovering,
+              "species": species as AnyHashable? ?? .none,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "predators": predators._fieldData,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
               "favoriteToy": favoriteToy,
-              "owner": owner._fieldData,
+              "owner": owner._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.self),
@@ -510,10 +510,10 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             self.init(_dataDict: DataDict(
               data: [
                 "__typename": AnimalKingdomAPI.Objects.Height.typename,
-                "relativeSize": relativeSize,
-                "centimeters": centimeters,
+                "relativeSize": relativeSize as AnyHashable? ?? .none,
+                "centimeters": centimeters as AnyHashable? ?? .none,
                 "feet": feet,
-                "inches": inches,
+                "inches": inches as AnyHashable? ?? .none,
               ],
               fulfilledFragments: [
                 ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.AsPet.Height.self),
@@ -571,13 +571,13 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
               data: [
                 "__typename": __typename,
                 "height": height._fieldData,
-                "species": species,
-                "skinCovering": skinCovering,
+                "species": species as AnyHashable? ?? .none,
+                "skinCovering": skinCovering as AnyHashable? ?? .none,
                 "predators": predators._fieldData,
                 "bodyTemperature": bodyTemperature,
-                "humanName": humanName,
+                "humanName": humanName as AnyHashable? ?? .none,
                 "favoriteToy": favoriteToy,
-                "owner": owner._fieldData,
+                "owner": owner._fieldData as AnyHashable? ?? .none,
               ],
               fulfilledFragments: [
                 ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.self),
@@ -616,9 +616,9 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
                 data: [
                   "__typename": AnimalKingdomAPI.Objects.Height.typename,
                   "feet": feet,
-                  "inches": inches,
-                  "relativeSize": relativeSize,
-                  "centimeters": centimeters,
+                  "inches": inches as AnyHashable? ?? .none,
+                  "relativeSize": relativeSize as AnyHashable? ?? .none,
+                  "centimeters": centimeters as AnyHashable? ?? .none,
                   "meters": meters,
                 ],
                 fulfilledFragments: [
@@ -683,13 +683,13 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
               "__typename": AnimalKingdomAPI.Objects.Cat.typename,
               "isJellicle": isJellicle,
               "height": height._fieldData,
-              "species": species,
-              "skinCovering": skinCovering,
+              "species": species as AnyHashable? ?? .none,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "predators": predators._fieldData,
               "bodyTemperature": bodyTemperature,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
               "favoriteToy": favoriteToy,
-              "owner": owner._fieldData,
+              "owner": owner._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.self),
@@ -729,9 +729,9 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
               data: [
                 "__typename": AnimalKingdomAPI.Objects.Height.typename,
                 "feet": feet,
-                "inches": inches,
-                "relativeSize": relativeSize,
-                "centimeters": centimeters,
+                "inches": inches as AnyHashable? ?? .none,
+                "relativeSize": relativeSize as AnyHashable? ?? .none,
+                "centimeters": centimeters as AnyHashable? ?? .none,
                 "meters": meters,
               ],
               fulfilledFragments: [
@@ -785,8 +785,8 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
             data: [
               "__typename": __typename,
               "height": height._fieldData,
-              "species": species,
-              "skinCovering": skinCovering,
+              "species": species as AnyHashable? ?? .none,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "predators": predators._fieldData,
             ],
             fulfilledFragments: [
@@ -844,13 +844,13 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
                 "__typename": AnimalKingdomAPI.Objects.Bird.typename,
                 "wingspan": wingspan,
                 "height": height._fieldData,
-                "species": species,
-                "skinCovering": skinCovering,
+                "species": species as AnyHashable? ?? .none,
+                "skinCovering": skinCovering as AnyHashable? ?? .none,
                 "predators": predators._fieldData,
                 "bodyTemperature": bodyTemperature,
-                "humanName": humanName,
+                "humanName": humanName as AnyHashable? ?? .none,
                 "favoriteToy": favoriteToy,
-                "owner": owner._fieldData,
+                "owner": owner._fieldData as AnyHashable? ?? .none,
               ],
               fulfilledFragments: [
                 ObjectIdentifier(AllAnimalsIncludeSkipQuery.Data.AllAnimal.self),
@@ -891,9 +891,9 @@ public class AllAnimalsIncludeSkipQuery: GraphQLQuery {
                 data: [
                   "__typename": AnimalKingdomAPI.Objects.Height.typename,
                   "feet": feet,
-                  "inches": inches,
-                  "relativeSize": relativeSize,
-                  "centimeters": centimeters,
+                  "inches": inches as AnyHashable? ?? .none,
+                  "relativeSize": relativeSize as AnyHashable? ?? .none,
+                  "centimeters": centimeters as AnyHashable? ?? .none,
                   "meters": meters,
                 ],
                 fulfilledFragments: [

@@ -37,7 +37,7 @@ public class HeroAndFriendsNamesWithFragmentTwiceQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroAndFriendsNamesWithFragmentTwiceQuery.Data.self)
@@ -71,7 +71,7 @@ public class HeroAndFriendsNamesWithFragmentTwiceQuery: GraphQLQuery {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": __typename,
-            "friends": friends._fieldData,
+            "friends": friends._fieldData as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HeroAndFriendsNamesWithFragmentTwiceQuery.Data.Hero.self)
@@ -141,7 +141,7 @@ public class HeroAndFriendsNamesWithFragmentTwiceQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": StarWarsAPI.Objects.Droid.typename,
-              "friends": friends._fieldData,
+              "friends": friends._fieldData as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(HeroAndFriendsNamesWithFragmentTwiceQuery.Data.Hero.self),

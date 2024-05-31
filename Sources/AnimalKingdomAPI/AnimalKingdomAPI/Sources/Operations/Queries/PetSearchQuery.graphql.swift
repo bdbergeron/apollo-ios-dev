@@ -80,7 +80,7 @@ public class PetSearchQuery: GraphQLQuery {
           data: [
             "__typename": __typename,
             "id": id,
-            "humanName": humanName,
+            "humanName": humanName as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(PetSearchQuery.Data.Pet.self)

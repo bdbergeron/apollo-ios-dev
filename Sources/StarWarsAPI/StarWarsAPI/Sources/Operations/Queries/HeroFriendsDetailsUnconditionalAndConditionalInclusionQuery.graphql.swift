@@ -36,7 +36,7 @@ public class HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery: GraphQ
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery.Data.self)
@@ -67,7 +67,7 @@ public class HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery: GraphQ
         self.init(_dataDict: DataDict(
           data: [
             "__typename": __typename,
-            "friends": friends._fieldData,
+            "friends": friends._fieldData as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery.Data.Hero.self)
@@ -170,7 +170,7 @@ public class HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery: GraphQ
               self.init(_dataDict: DataDict(
                 data: [
                   "__typename": StarWarsAPI.Objects.Droid.typename,
-                  "primaryFunction": primaryFunction,
+                  "primaryFunction": primaryFunction as AnyHashable? ?? .none,
                   "name": name,
                 ],
                 fulfilledFragments: [
@@ -209,7 +209,7 @@ public class HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery: GraphQ
               data: [
                 "__typename": StarWarsAPI.Objects.Droid.typename,
                 "name": name,
-                "primaryFunction": primaryFunction,
+                "primaryFunction": primaryFunction as AnyHashable? ?? .none,
               ],
               fulfilledFragments: [
                 ObjectIdentifier(HeroFriendsDetailsUnconditionalAndConditionalInclusionQuery.Data.Hero.Friend.self),

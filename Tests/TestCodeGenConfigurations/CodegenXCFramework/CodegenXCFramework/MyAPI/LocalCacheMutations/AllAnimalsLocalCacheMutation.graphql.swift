@@ -75,7 +75,7 @@ public extension MyAPI {
             data: [
               "__typename": __typename,
               "species": species,
-              "skinCovering": skinCovering,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsLocalCacheMutation.Data.AllAnimal.self)
@@ -119,7 +119,7 @@ public extension MyAPI {
                 "__typename": MyAPI.Objects.Bird.typename,
                 "wingspan": wingspan,
                 "species": species,
-                "skinCovering": skinCovering,
+                "skinCovering": skinCovering as AnyHashable? ?? .none,
               ],
               fulfilledFragments: [
                 ObjectIdentifier(AllAnimalsLocalCacheMutation.Data.AllAnimal.self),

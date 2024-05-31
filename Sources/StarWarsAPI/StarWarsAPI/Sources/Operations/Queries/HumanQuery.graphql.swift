@@ -36,7 +36,7 @@ public class HumanQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "human": human._fieldData,
+          "human": human._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HumanQuery.Data.self)
@@ -71,7 +71,7 @@ public class HumanQuery: GraphQLQuery {
           data: [
             "__typename": StarWarsAPI.Objects.Human.typename,
             "name": name,
-            "mass": mass,
+            "mass": mass as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HumanQuery.Data.Human.self)

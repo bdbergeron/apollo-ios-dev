@@ -36,7 +36,7 @@ public class HeroNameConditionalExclusionQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroNameConditionalExclusionQuery.Data.self)
@@ -67,7 +67,7 @@ public class HeroNameConditionalExclusionQuery: GraphQLQuery {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": __typename,
-            "name": name,
+            "name": name as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HeroNameConditionalExclusionQuery.Data.Hero.self)

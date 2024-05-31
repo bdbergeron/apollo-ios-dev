@@ -67,7 +67,7 @@ public class DogQuery: GraphQLQuery {
           data: [
             "__typename": __typename,
             "id": id,
-            "skinCovering": skinCovering,
+            "skinCovering": skinCovering as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(DogQuery.Data.AllAnimal.self)
@@ -110,9 +110,9 @@ public class DogQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": AnimalKingdomAPI.Objects.Dog.typename,
-              "houseDetails": houseDetails,
+              "houseDetails": houseDetails as AnyHashable? ?? .none,
               "id": id,
-              "skinCovering": skinCovering,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
               "species": species,
             ],
             fulfilledFragments: [

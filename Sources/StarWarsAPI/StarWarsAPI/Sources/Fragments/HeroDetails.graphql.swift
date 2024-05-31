@@ -65,7 +65,7 @@ public struct HeroDetails: StarWarsAPI.SelectionSet, Fragment {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Human.typename,
-          "height": height,
+          "height": height as AnyHashable? ?? .none,
           "name": name,
         ],
         fulfilledFragments: [
@@ -101,7 +101,7 @@ public struct HeroDetails: StarWarsAPI.SelectionSet, Fragment {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Droid.typename,
-          "primaryFunction": primaryFunction,
+          "primaryFunction": primaryFunction as AnyHashable? ?? .none,
           "name": name,
         ],
         fulfilledFragments: [

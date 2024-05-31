@@ -36,7 +36,7 @@ public class HeroAndFriendsNamesWithIDForParentOnlyQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroAndFriendsNamesWithIDForParentOnlyQuery.Data.self)
@@ -77,7 +77,7 @@ public class HeroAndFriendsNamesWithIDForParentOnlyQuery: GraphQLQuery {
             "__typename": __typename,
             "id": id,
             "name": name,
-            "friends": friends._fieldData,
+            "friends": friends._fieldData as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HeroAndFriendsNamesWithIDForParentOnlyQuery.Data.Hero.self)

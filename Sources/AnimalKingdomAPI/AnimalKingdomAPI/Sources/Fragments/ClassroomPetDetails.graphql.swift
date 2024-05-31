@@ -96,7 +96,7 @@ public struct ClassroomPetDetails: AnimalKingdomAPI.SelectionSet, Fragment {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": __typename,
-          "humanName": humanName,
+          "humanName": humanName as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(ClassroomPetDetails.self),
@@ -175,7 +175,7 @@ public struct ClassroomPetDetails: AnimalKingdomAPI.SelectionSet, Fragment {
           "bodyTemperature": bodyTemperature,
           "isJellicle": isJellicle,
           "species": species,
-          "humanName": humanName,
+          "humanName": humanName as AnyHashable? ?? .none,
           "laysEggs": laysEggs,
         ],
         fulfilledFragments: [
@@ -218,7 +218,7 @@ public struct ClassroomPetDetails: AnimalKingdomAPI.SelectionSet, Fragment {
           "__typename": AnimalKingdomAPI.Objects.Bird.typename,
           "wingspan": wingspan,
           "species": species,
-          "humanName": humanName,
+          "humanName": humanName as AnyHashable? ?? .none,
           "laysEggs": laysEggs,
         ],
         fulfilledFragments: [
@@ -256,7 +256,7 @@ public struct ClassroomPetDetails: AnimalKingdomAPI.SelectionSet, Fragment {
         data: [
           "__typename": AnimalKingdomAPI.Objects.PetRock.typename,
           "favoriteToy": favoriteToy,
-          "humanName": humanName,
+          "humanName": humanName as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(ClassroomPetDetails.self),

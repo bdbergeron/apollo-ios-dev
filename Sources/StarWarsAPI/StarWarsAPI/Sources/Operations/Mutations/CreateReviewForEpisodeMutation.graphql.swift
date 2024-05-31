@@ -47,7 +47,7 @@ public class CreateReviewForEpisodeMutation: GraphQLMutation {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Mutation.typename,
-          "createReview": createReview._fieldData,
+          "createReview": createReview._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(CreateReviewForEpisodeMutation.Data.self)
@@ -82,7 +82,7 @@ public class CreateReviewForEpisodeMutation: GraphQLMutation {
           data: [
             "__typename": StarWarsAPI.Objects.Review.typename,
             "stars": stars,
-            "commentary": commentary,
+            "commentary": commentary as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(CreateReviewForEpisodeMutation.Data.CreateReview.self)

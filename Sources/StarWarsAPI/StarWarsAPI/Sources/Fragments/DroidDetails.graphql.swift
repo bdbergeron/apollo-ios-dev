@@ -31,7 +31,7 @@ public struct DroidDetails: StarWarsAPI.SelectionSet, Fragment {
       data: [
         "__typename": StarWarsAPI.Objects.Droid.typename,
         "name": name,
-        "primaryFunction": primaryFunction,
+        "primaryFunction": primaryFunction as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(DroidDetails.self)

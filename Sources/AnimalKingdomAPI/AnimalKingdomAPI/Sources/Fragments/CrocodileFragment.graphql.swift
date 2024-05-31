@@ -33,7 +33,7 @@ public struct CrocodileFragment: AnimalKingdomAPI.SelectionSet, Fragment {
         "__typename": AnimalKingdomAPI.Objects.Crocodile.typename,
         "species": species,
         "age": age,
-        "tag": tag,
+        "tag": tag as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(CrocodileFragment.self)

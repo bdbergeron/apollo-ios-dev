@@ -36,7 +36,7 @@ public class HeroTypeDependentAliasedFieldQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroTypeDependentAliasedFieldQuery.Data.self)
@@ -96,7 +96,7 @@ public class HeroTypeDependentAliasedFieldQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": StarWarsAPI.Objects.Human.typename,
-              "property": property,
+              "property": property as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(HeroTypeDependentAliasedFieldQuery.Data.Hero.self),
@@ -128,7 +128,7 @@ public class HeroTypeDependentAliasedFieldQuery: GraphQLQuery {
           self.init(_dataDict: DataDict(
             data: [
               "__typename": StarWarsAPI.Objects.Droid.typename,
-              "property": property,
+              "property": property as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(HeroTypeDependentAliasedFieldQuery.Data.Hero.self),

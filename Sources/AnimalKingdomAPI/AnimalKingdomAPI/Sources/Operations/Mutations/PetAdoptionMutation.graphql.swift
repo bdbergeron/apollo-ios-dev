@@ -69,7 +69,7 @@ public class PetAdoptionMutation: GraphQLMutation {
           data: [
             "__typename": __typename,
             "id": id,
-            "humanName": humanName,
+            "humanName": humanName as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(PetAdoptionMutation.Data.AdoptPet.self)

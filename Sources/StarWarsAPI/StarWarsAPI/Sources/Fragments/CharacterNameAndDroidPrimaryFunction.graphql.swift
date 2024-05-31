@@ -79,7 +79,7 @@ public struct CharacterNameAndDroidPrimaryFunction: StarWarsAPI.SelectionSet, Fr
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Droid.typename,
-          "primaryFunction": primaryFunction,
+          "primaryFunction": primaryFunction as AnyHashable? ?? .none,
           "name": name,
         ],
         fulfilledFragments: [

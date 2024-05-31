@@ -33,8 +33,8 @@ public class TwoHeroesQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "r2": r2._fieldData,
-          "luke": luke._fieldData,
+          "r2": r2._fieldData as AnyHashable? ?? .none,
+          "luke": luke._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(TwoHeroesQuery.Data.self)

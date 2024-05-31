@@ -27,7 +27,7 @@ public struct FriendsNames: StarWarsAPI.SelectionSet, Fragment {
     self.init(_dataDict: DataDict(
       data: [
         "__typename": __typename,
-        "friends": friends._fieldData,
+        "friends": friends._fieldData as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(FriendsNames.self)

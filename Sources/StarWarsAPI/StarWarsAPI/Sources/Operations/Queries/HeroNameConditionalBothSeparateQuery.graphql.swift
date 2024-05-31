@@ -44,7 +44,7 @@ public class HeroNameConditionalBothSeparateQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroNameConditionalBothSeparateQuery.Data.self)
@@ -75,7 +75,7 @@ public class HeroNameConditionalBothSeparateQuery: GraphQLQuery {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": __typename,
-            "name": name,
+            "name": name as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(HeroNameConditionalBothSeparateQuery.Data.Hero.self)

@@ -56,7 +56,7 @@ public struct CharacterNameWithInlineFragment: StarWarsAPI.SelectionSet, Fragmen
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Human.typename,
-          "friends": friends._fieldData,
+          "friends": friends._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(CharacterNameWithInlineFragment.self),
@@ -133,7 +133,7 @@ public struct CharacterNameWithInlineFragment: StarWarsAPI.SelectionSet, Fragmen
         data: [
           "__typename": StarWarsAPI.Objects.Droid.typename,
           "name": name,
-          "friends": friends._fieldData,
+          "friends": friends._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(CharacterNameWithInlineFragment.self),

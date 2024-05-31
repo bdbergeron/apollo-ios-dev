@@ -37,7 +37,7 @@ public class DroidDetailsWithFragmentQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(DroidDetailsWithFragmentQuery.Data.self)
@@ -106,7 +106,7 @@ public class DroidDetailsWithFragmentQuery: GraphQLQuery {
             data: [
               "__typename": StarWarsAPI.Objects.Droid.typename,
               "name": name,
-              "primaryFunction": primaryFunction,
+              "primaryFunction": primaryFunction as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(DroidDetailsWithFragmentQuery.Data.Hero.self),

@@ -30,7 +30,7 @@ public extension MyAPI {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": __typename,
-          "owner": owner._fieldData,
+          "owner": owner._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(PetDetailsMutation.self)

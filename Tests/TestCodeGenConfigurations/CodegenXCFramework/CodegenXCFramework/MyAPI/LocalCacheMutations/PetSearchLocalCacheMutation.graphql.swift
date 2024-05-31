@@ -86,7 +86,7 @@ public extension MyAPI {
             data: [
               "__typename": __typename,
               "id": id,
-              "humanName": humanName,
+              "humanName": humanName as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(PetSearchLocalCacheMutation.Data.Pet.self)

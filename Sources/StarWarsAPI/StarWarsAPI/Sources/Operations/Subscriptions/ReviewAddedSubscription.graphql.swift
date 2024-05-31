@@ -36,7 +36,7 @@ public class ReviewAddedSubscription: GraphQLSubscription {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Subscription.typename,
-          "reviewAdded": reviewAdded._fieldData,
+          "reviewAdded": reviewAdded._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(ReviewAddedSubscription.Data.self)
@@ -74,9 +74,9 @@ public class ReviewAddedSubscription: GraphQLSubscription {
         self.init(_dataDict: DataDict(
           data: [
             "__typename": StarWarsAPI.Objects.Review.typename,
-            "episode": episode,
+            "episode": episode as AnyHashable? ?? .none,
             "stars": stars,
-            "commentary": commentary,
+            "commentary": commentary as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(ReviewAddedSubscription.Data.ReviewAdded.self)

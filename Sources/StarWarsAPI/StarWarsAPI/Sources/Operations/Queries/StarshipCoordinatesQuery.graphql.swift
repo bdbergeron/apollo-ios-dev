@@ -36,7 +36,7 @@ public class StarshipCoordinatesQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "starshipCoordinates": starshipCoordinates._fieldData,
+          "starshipCoordinates": starshipCoordinates._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(StarshipCoordinatesQuery.Data.self)
@@ -74,8 +74,8 @@ public class StarshipCoordinatesQuery: GraphQLQuery {
           data: [
             "__typename": StarWarsAPI.Objects.Starship.typename,
             "name": name,
-            "coordinates": coordinates,
-            "length": length,
+            "coordinates": coordinates as AnyHashable? ?? .none,
+            "length": length as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(StarshipCoordinatesQuery.Data.StarshipCoordinates.self)

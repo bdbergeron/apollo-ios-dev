@@ -26,7 +26,7 @@ public struct DroidPrimaryFunction: StarWarsAPI.SelectionSet, Fragment {
     self.init(_dataDict: DataDict(
       data: [
         "__typename": StarWarsAPI.Objects.Droid.typename,
-        "primaryFunction": primaryFunction,
+        "primaryFunction": primaryFunction as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(DroidPrimaryFunction.self)

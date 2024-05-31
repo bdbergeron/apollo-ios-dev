@@ -37,7 +37,7 @@ public class HeroDetailsWithFragmentQuery: GraphQLQuery {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Query.typename,
-          "hero": hero._fieldData,
+          "hero": hero._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(HeroDetailsWithFragmentQuery.Data.self)
@@ -122,7 +122,7 @@ public class HeroDetailsWithFragmentQuery: GraphQLQuery {
             data: [
               "__typename": StarWarsAPI.Objects.Human.typename,
               "name": name,
-              "height": height,
+              "height": height as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(HeroDetailsWithFragmentQuery.Data.Hero.self),
@@ -169,7 +169,7 @@ public class HeroDetailsWithFragmentQuery: GraphQLQuery {
             data: [
               "__typename": StarWarsAPI.Objects.Droid.typename,
               "name": name,
-              "primaryFunction": primaryFunction,
+              "primaryFunction": primaryFunction as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(HeroDetailsWithFragmentQuery.Data.Hero.self),

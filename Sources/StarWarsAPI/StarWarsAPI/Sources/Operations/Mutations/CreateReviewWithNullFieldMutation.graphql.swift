@@ -36,7 +36,7 @@ public class CreateReviewWithNullFieldMutation: GraphQLMutation {
       self.init(_dataDict: DataDict(
         data: [
           "__typename": StarWarsAPI.Objects.Mutation.typename,
-          "createReview": createReview._fieldData,
+          "createReview": createReview._fieldData as AnyHashable? ?? .none,
         ],
         fulfilledFragments: [
           ObjectIdentifier(CreateReviewWithNullFieldMutation.Data.self)
@@ -71,7 +71,7 @@ public class CreateReviewWithNullFieldMutation: GraphQLMutation {
           data: [
             "__typename": StarWarsAPI.Objects.Review.typename,
             "stars": stars,
-            "commentary": commentary,
+            "commentary": commentary as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(CreateReviewWithNullFieldMutation.Data.CreateReview.self)

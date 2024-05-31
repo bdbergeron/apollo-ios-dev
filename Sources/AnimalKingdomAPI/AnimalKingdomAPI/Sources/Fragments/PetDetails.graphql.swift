@@ -32,9 +32,9 @@ public struct PetDetails: AnimalKingdomAPI.SelectionSet, Fragment {
     self.init(_dataDict: DataDict(
       data: [
         "__typename": __typename,
-        "humanName": humanName,
+        "humanName": humanName as AnyHashable? ?? .none,
         "favoriteToy": favoriteToy,
-        "owner": owner._fieldData,
+        "owner": owner._fieldData as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(PetDetails.self)

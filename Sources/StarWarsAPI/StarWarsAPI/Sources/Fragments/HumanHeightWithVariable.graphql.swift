@@ -26,7 +26,7 @@ public struct HumanHeightWithVariable: StarWarsAPI.SelectionSet, Fragment {
     self.init(_dataDict: DataDict(
       data: [
         "__typename": StarWarsAPI.Objects.Human.typename,
-        "height": height,
+        "height": height as AnyHashable? ?? .none,
       ],
       fulfilledFragments: [
         ObjectIdentifier(HumanHeightWithVariable.self)

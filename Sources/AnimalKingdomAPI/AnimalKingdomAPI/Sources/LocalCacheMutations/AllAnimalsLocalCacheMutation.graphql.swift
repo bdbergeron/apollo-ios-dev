@@ -74,7 +74,7 @@ public class AllAnimalsLocalCacheMutation: LocalCacheMutation {
           data: [
             "__typename": __typename,
             "species": species,
-            "skinCovering": skinCovering,
+            "skinCovering": skinCovering as AnyHashable? ?? .none,
           ],
           fulfilledFragments: [
             ObjectIdentifier(AllAnimalsLocalCacheMutation.Data.AllAnimal.self)
@@ -118,7 +118,7 @@ public class AllAnimalsLocalCacheMutation: LocalCacheMutation {
               "__typename": AnimalKingdomAPI.Objects.Bird.typename,
               "wingspan": wingspan,
               "species": species,
-              "skinCovering": skinCovering,
+              "skinCovering": skinCovering as AnyHashable? ?? .none,
             ],
             fulfilledFragments: [
               ObjectIdentifier(AllAnimalsLocalCacheMutation.Data.AllAnimal.self),
