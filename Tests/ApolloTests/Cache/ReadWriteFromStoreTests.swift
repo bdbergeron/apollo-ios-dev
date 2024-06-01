@@ -1727,7 +1727,7 @@ class ReadWriteFromStoreTests: XCTestCase, CacheDependentTesting, StoreLoading {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Query.typename,
-          "name": name
+          "name": name as AnyHashable? ?? .none
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
     }
@@ -1830,8 +1830,8 @@ class ReadWriteFromStoreTests: XCTestCase, CacheDependentTesting, StoreLoading {
             self.init(_dataDict: DataDict(data: [
               "__typename": Types.Human.typename,
               "name": name,
-              "friend": friend._fieldData,
-              "other": other
+              "friend": friend._fieldData as AnyHashable? ?? .none,
+              "other": other as AnyHashable? ?? .none
             ], fulfilledFragments: [
               ObjectIdentifier(Hero.self),
               ObjectIdentifier(Self.self)

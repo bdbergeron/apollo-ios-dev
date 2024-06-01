@@ -1290,7 +1290,7 @@ class SelectionSetTests: XCTestCase {
             self.init(_dataDict: DataDict(data: [
               "__typename": Types.Human.typename,
               "name": name,
-              "friend": friend._fieldData,
+              "friend": friend._fieldData as AnyHashable? ?? .none,
             ], fulfilledFragments: [
               ObjectIdentifier(Self.self),
               ObjectIdentifier(Hero.self),
@@ -1444,7 +1444,7 @@ class SelectionSetTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "name": name,
+          "name": name as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
     }
@@ -1505,7 +1505,7 @@ class SelectionSetTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "child": child,
+          "child": child as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
 
@@ -1524,7 +1524,7 @@ class SelectionSetTests: XCTestCase {
         ) {
           self.init(_dataDict: DataDict(data: [
             "__typename": Types.Human.typename,
-            "name": name,
+            "name": name as AnyHashable? ?? .none,
           ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
         }
       }
@@ -1587,7 +1587,7 @@ class SelectionSetTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "friends": friends._fieldData,
+          "friends": friends._fieldData as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
 
@@ -1652,7 +1652,7 @@ class SelectionSetTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "names": names,
+          "names": names as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
 
@@ -1669,152 +1669,6 @@ class SelectionSetTests: XCTestCase {
     expect(actual.names?[0]).to(equal("Han"))
     expect(actual.names?[1]).to(beNil())
     expect(actual.names?[2]).to(equal("Leia"))
-  }
-
-  func test__selectionInitializer_objectEqualToObjectFromJSON_optionalWithValue() throws {
-    // given
-    struct Types {
-      static let Human = Object(typename: "Human", implementedInterfaces: [])
-    }
-
-    MockSchemaMetadata.stub_objectTypeForTypeName = {
-      switch $0 {
-      case "Human": return Types.Human
-      default: XCTFail(); return nil
-      }
-    }
-
-    class Hero: MockSelectionSet {
-      typealias Schema = MockSchemaMetadata
-
-      override class var __parentType: ParentType { Types.Human }
-      override class var __selections: [Selection] {[
-        .field("__typename", String.self),
-        .field("name", String?.self),
-      ]}
-
-      var name: String? { __data["name"] }
-
-      convenience init(
-        name: String? = nil
-      ) {
-        self.init(_dataDict: DataDict(data: [
-          "__typename": Types.Human.typename,
-          "name": name,
-        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
-      }
-    }
-
-    class FixedHero: MockSelectionSet {
-      typealias Schema = MockSchemaMetadata
-
-      override class var __parentType: ParentType { Types.Human }
-      override class var __selections: [Selection] {[
-        .field("__typename", String.self),
-        .field("name", String?.self),
-      ]}
-
-      var name: String? { __data["name"] }
-
-      convenience init(
-        name: String? = nil
-      ) {
-        self.init(_dataDict: DataDict(data: [
-          "__typename": Types.Human.typename,
-          "name": name as AnyHashable? ?? .none, // This conditional coalescing fixes optional equality.
-        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
-      }
-    }
-
-    // when
-    let name: String? = "Han Solo"
-    let jsonData: JSONObject = [
-      "__typename": "Human",
-      "name": name,
-    ]
-
-    let hero = Hero(name: name)
-    let heroFromJSON = try Hero(data: jsonData)
-
-    let fixedHero = FixedHero(name: name)
-    let fixedHeroFromJSON = try FixedHero(data: jsonData)
-
-    // then
-    expect(heroFromJSON).toNot(equal(hero))
-    expect(fixedHeroFromJSON).to(equal(fixedHero))
-  }
-
-  func test__selectionInitializer_objectEqualToObjectFromJSON_optionalWithNilValue() throws {
-    // given
-    struct Types {
-      static let Human = Object(typename: "Human", implementedInterfaces: [])
-    }
-
-    MockSchemaMetadata.stub_objectTypeForTypeName = {
-      switch $0 {
-      case "Human": return Types.Human
-      default: XCTFail(); return nil
-      }
-    }
-
-    class Hero: MockSelectionSet {
-      typealias Schema = MockSchemaMetadata
-
-      override class var __parentType: ParentType { Types.Human }
-      override class var __selections: [Selection] {[
-        .field("__typename", String.self),
-        .field("name", String?.self),
-      ]}
-
-      var name: String? { __data["name"] }
-
-      convenience init(
-        name: String? = nil
-      ) {
-        self.init(_dataDict: DataDict(data: [
-          "__typename": Types.Human.typename,
-          "name": name,
-        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
-      }
-    }
-
-    class FixedHero: MockSelectionSet {
-      typealias Schema = MockSchemaMetadata
-
-      override class var __parentType: ParentType { Types.Human }
-      override class var __selections: [Selection] {[
-        .field("__typename", String.self),
-        .field("name", String?.self),
-      ]}
-
-      var name: String? { __data["name"] }
-
-      convenience init(
-        name: String? = nil
-      ) {
-        self.init(_dataDict: DataDict(data: [
-          "__typename": Types.Human.typename,
-          "name": name as AnyHashable? ?? .none, // This conditional coalescing fixes optional equality.
-        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
-      }
-    }
-
-    // when
-    let name: String? = nil
-    let jsonData: JSONObject = [
-      "__typename": "Human",
-      "name": name,
-    ]
-
-    let hero = Hero(name: name)
-    let heroFromJSON = try Hero(data: jsonData)
-
-    let fixedHero = FixedHero(name: name)
-    let fixedHeroFromJSON = try FixedHero(data: jsonData)
-
-    // then
-    expect(heroFromJSON).toNot(equal(hero))
-    expect(fixedHeroFromJSON).to(equal(fixedHero))
   }
 
   // MARK: Condition Tests

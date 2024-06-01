@@ -279,7 +279,7 @@ class SelectionSet_JSONInitializerTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "name": name,
+          "name": name as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
     }
@@ -292,9 +292,7 @@ class SelectionSet_JSONInitializerTests: XCTestCase {
     let hero = Hero(name: "Han Solo")
     let heroFromJSON = try Hero(data: jsonData)
 
-    _ = XCTExpectFailure("JSON-decoded object does not equal SelectionSet initializer.") {
-      expect(heroFromJSON).to(equal(hero))
-    }
+    expect(heroFromJSON).to(equal(hero))
   }
 
   func test__initFromJSON__objectEqualityWithSelectionSetInitializer__optionalWithNilValue() throws {
@@ -325,7 +323,7 @@ class SelectionSet_JSONInitializerTests: XCTestCase {
       ) {
         self.init(_dataDict: DataDict(data: [
           "__typename": Types.Human.typename,
-          "name": name,
+          "name": name as AnyHashable? ?? .none,
         ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
       }
     }
@@ -338,8 +336,6 @@ class SelectionSet_JSONInitializerTests: XCTestCase {
     let hero = Hero()
     let heroFromJSON = try Hero(data: jsonData)
 
-    _ = XCTExpectFailure("JSON-decoded object does not equal SelectionSet initializer.") {
-      expect(heroFromJSON).to(equal(hero))
-    }
+    expect(heroFromJSON).to(equal(hero))
   }
 }
