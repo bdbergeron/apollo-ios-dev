@@ -248,4 +248,98 @@ class SelectionSet_JSONInitializerTests: XCTestCase {
     expect(data.asHuman?.friend.asHuman).toNot(beNil())
     expect(data.asHuman?.friend.asHuman?.heroName).to(equal("Han Solo"))
   }
+
+  // MARK: - SelectionSet Equality Tests
+
+  func test__initFromJSON__objectEqualityWithSelectionSetInitializer__optionalWithValue() throws {
+    struct Types {
+      static let Human = Object(typename: "Human", implementedInterfaces: [])
+    }
+
+    MockSchemaMetadata.stub_objectTypeForTypeName = {
+      switch $0 {
+      case "Human": return Types.Human
+      default: XCTFail(); return nil
+      }
+    }
+
+    class Hero: MockSelectionSet {
+      typealias Schema = MockSchemaMetadata
+
+      override class var __parentType: ParentType { Types.Human }
+      override class var __selections: [Selection] {[
+        .field("__typename", String.self),
+        .field("name", String?.self),
+      ]}
+
+      var name: String? { __data["name"] }
+
+      convenience init(
+        name: String? = nil
+      ) {
+        self.init(_dataDict: DataDict(data: [
+          "__typename": Types.Human.typename,
+          "name": name,
+        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
+      }
+    }
+
+    let jsonData: JSONObject = [
+      "__typename": "Human",
+      "name": "Han Solo",
+    ]
+
+    let hero = Hero(name: "Han Solo")
+    let heroFromJSON = try Hero(data: jsonData)
+
+    _ = XCTExpectFailure("JSON-decoded object does not equal SelectionSet initializer.") {
+      expect(heroFromJSON).to(equal(hero))
+    }
+  }
+
+  func test__initFromJSON__objectEqualityWithSelectionSetInitializer__optionalWithNilValue() throws {
+    struct Types {
+      static let Human = Object(typename: "Human", implementedInterfaces: [])
+    }
+
+    MockSchemaMetadata.stub_objectTypeForTypeName = {
+      switch $0 {
+      case "Human": return Types.Human
+      default: XCTFail(); return nil
+      }
+    }
+
+    class Hero: MockSelectionSet {
+      typealias Schema = MockSchemaMetadata
+
+      override class var __parentType: ParentType { Types.Human }
+      override class var __selections: [Selection] {[
+        .field("__typename", String.self),
+        .field("name", String?.self),
+      ]}
+
+      var name: String? { __data["name"] }
+
+      convenience init(
+        name: String? = nil
+      ) {
+        self.init(_dataDict: DataDict(data: [
+          "__typename": Types.Human.typename,
+          "name": name,
+        ], fulfilledFragments: [ObjectIdentifier(Self.self)]))
+      }
+    }
+
+    let jsonData: JSONObject = [
+      "__typename": "Human",
+      "name": Optional<String>.none
+    ]
+
+    let hero = Hero()
+    let heroFromJSON = try Hero(data: jsonData)
+
+    _ = XCTExpectFailure("JSON-decoded object does not equal SelectionSet initializer.") {
+      expect(heroFromJSON).to(equal(hero))
+    }
+  }
 }
